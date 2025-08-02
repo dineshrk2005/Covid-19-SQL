@@ -1,7 +1,7 @@
-📊 COVID-19 SQL Data Analysis Project
+COVID-19 SQL Data Analysis Project
 This project uses real-world COVID-19 data to perform structured analysis using SQL. It helps you explore global pandemic trends, death rates, and vaccination progress across countries.
 
-📁 Dataset Used
+1)Dataset Used
 Covid_deaths.csv
 
 Columns: location, continent, date, total_cases, new_cases, total_deaths, population, etc.
@@ -10,7 +10,7 @@ Covid_vaccinations.csv
 
 Columns: location, date, new_vaccinations, people_vaccinated, people_fully_vaccinated, etc.
 
-🎯 Project Objectives
+2)Project Objectives
 Analyze total cases, deaths, and vaccination data
 
 Identify most affected countries by case rate and death rate
@@ -21,7 +21,7 @@ Create views for better dashboard integration
 
 Prepare data for Excel or Power BI dashboards
 
-🛠️ SQL Environment Setup
+🛠3)SQL Environment Setup
 Load the CSV files into a relational database such as MySQL, PostgreSQL, or SQLite.
 
 Ensure correct datatypes:
@@ -53,8 +53,8 @@ CREATE TABLE covid_vaccinations (
   people_vaccinated BIGINT,
   people_fully_vaccinated BIGINT
 );
-📌 Key SQL Queries
-1. Total Cases vs Total Deaths (Mortality Rate)
+4)Key SQL Queries
+4.1)Total Cases vs Total Deaths (Mortality Rate)
 sql
 Copy
 Edit
@@ -62,7 +62,7 @@ SELECT location, date, total_cases, total_deaths,
        (total_deaths / total_cases) * 100 AS death_percentage
 FROM covid_deaths
 WHERE continent IS NOT NULL;
-2. Total Cases vs Population (Infection Rate)
+4.2)Total Cases vs Population (Infection Rate)
 sql
 Copy
 Edit
@@ -72,7 +72,7 @@ FROM covid_deaths
 GROUP BY location, population
 ORDER BY infection_rate DESC
 LIMIT 10;
-3. Countries with Highest Death Count
+4.3)Countries with Highest Death Count
 sql
 Copy
 Edit
@@ -82,7 +82,7 @@ WHERE continent IS NOT NULL
 GROUP BY location
 ORDER BY highest_deaths DESC
 LIMIT 10;
-4. Vaccination Progress with Rolling Sum
+4.4)Vaccination Progress with Rolling Sum
 sql
 Copy
 Edit
@@ -93,7 +93,7 @@ FROM covid_deaths d
 JOIN covid_vaccinations v
   ON d.location = v.location AND d.date = v.date
 WHERE d.continent IS NOT NULL;
-📊 Suggested Visualizations (in Power BI or Excel)
+5)Suggested Visualizations (in Power BI or Excel)
 Bar Chart: Top 10 countries by infection rate
 
 Line Graph: New cases/deaths over time
@@ -104,7 +104,7 @@ Map Chart: Total deaths by continent
 
 KPI Cards: Total Cases, Total Deaths, Total Vaccinations
 
-✅ Tools Used
+6)Tools Used
 SQL (MySQL / PostgreSQL / SQLite)
 
 Excel or Power BI for dashboard creation
@@ -113,7 +113,7 @@ Python (optional for data processing or export)
 
 Markdown for documentation
 
-📌 Final Notes
+6)Final Notes
 Clean and preprocess data to handle NULLs
 
 Optimize with views or indexes for performance
